@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Inclass.iml" filepath="$PROJECT_DIR$/Inclass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InclasssqlLite.iml" filepath="$PROJECT_DIR$/InclasssqlLite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

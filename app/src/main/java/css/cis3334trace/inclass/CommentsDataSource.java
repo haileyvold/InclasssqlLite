@@ -8,6 +8,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.EditText;
+
+import static android.R.attr.rating;
 
 public class CommentsDataSource {
 
@@ -30,8 +33,10 @@ public class CommentsDataSource {
     }
 
     public Comment createComment(String comment) {
+
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_COMMENT, comment);
+        values.put(MySQLiteHelper.COLUMN_RATING, rating);
         long insertId = database.insert(MySQLiteHelper.TABLE_COMMENTS, null,
                 values);
         Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,  // cursor helps locate the spot in the database that the comment will land
@@ -53,8 +58,7 @@ public class CommentsDataSource {
     public List<Comment> getAllComments() {
         List<Comment> comments = new ArrayList<Comment>();  //creates an array with all previous comments
 
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS,
-                allColumns, null, null, null, null, null);   //access all columns of the database for the cursor to traverse
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_COMMENTS, null, null, null, null, null, null);
 
         cursor.moveToFirst(); //cursor begins pulling comments
         while (!cursor.isAfterLast()) {
@@ -68,7 +72,9 @@ public class CommentsDataSource {
     }
 
     private Comment cursorToComment(Cursor cursor) {
+
         Comment comment = new Comment();
+        Comment.setRating(cursor.getString( cursor.getColumnIndex( MySQLiteHelper.COLUMN_RATING ) ));
         comment.setId(cursor.getLong(0));
         comment.setComment(cursor.getString(1));
         return comment;

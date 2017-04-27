@@ -3,6 +3,7 @@ package css.cis3334trace.inclass;
 public class Comment {
     private long id;
     private String comment;
+    private String rating;
     /**
      * Gets an Id from the SetID class
      * @return      ID
@@ -32,10 +33,19 @@ public class Comment {
         this.comment = comment;
     }
 
-    // Will be used by the ArrayAdapter in the ListView
-    @Override
-    public String toString() {
-        return comment;
+    public String getRating() {
+        return rating;
     }
-    // this class gets and sets an Id as well as a Comment for the ListView to use later on
-}
+
+
+    public void setRating(String rating) {
+        switch (this.rating = rating) {
+        }
+    }
+
+    public String toString() {
+        return comment + rating;
+
+
+    }}
+

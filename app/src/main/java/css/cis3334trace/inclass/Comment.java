@@ -8,6 +8,7 @@ public class Comment {
      * Gets an Id from the SetID class
      * @return      ID
      */
+
     public long getId() {
         return id;  //gets the Id
     }
@@ -33,19 +34,25 @@ public class Comment {
         this.comment = comment;
     }
 
+
+    /**
+     * Gets a rating for use elsewhere
+     * @return   rating
+     */
     public String getRating() {
         return rating;
     }
 
-
+    /**
+     * Sets this.rating to the specific rating
+     * @Param rating
+     */
     public void setRating(String rating) {
-        switch (this.rating = rating) {
-        }
+        this.rating = rating;
     }
 
     public String toString() {
         return comment + rating;
-
 
     }}
 

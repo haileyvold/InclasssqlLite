@@ -11,6 +11,7 @@ import android.widget.EditText;
 public class TestDataBaseActivity extends ListActivity {
     private CommentsDataSource datasource;
 
+    EditText etRating;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +37,19 @@ public class TestDataBaseActivity extends ListActivity {
         Comment comment = null;
         switch (view.getId()) {
             case R.id.add:
-                EditText edit = (EditText)findViewById(R.id.editText2);
-                String[] comments = new String[] { "Cool", "Very nice", "Hate it" };
+                etRating = (EditText) findViewById(R.id.editTextRating);
+                String[] comments;
+                comments = new String[]{"Cool", "Very nice", "Hate it"};
+                String[] ratings;
+                ratings = new String[]{"1", "2", "3", "4", "5"};
                 int nextInt = new Random().nextInt(3);
                 // save the new comment to the database
 
-                comment = datasource.createComment(comments[nextInt]);
+                comment = datasource.createComment(comments[nextInt], ratings[nextInt]);
 
                 adapter.add(comment);
+
+
                 break;
             case R.id.delete:
                 if (getListAdapter().getCount() > 0) {

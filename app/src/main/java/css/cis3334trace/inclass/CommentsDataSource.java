@@ -10,6 +10,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.EditText;
 
+import static android.R.attr.fingerprintAuthDrawable;
 import static android.R.attr.rating;
 
 public class CommentsDataSource {
@@ -19,6 +20,7 @@ public class CommentsDataSource {
     private MySQLiteHelper dbHelper;
     private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
             MySQLiteHelper.COLUMN_COMMENT };
+
 
     public CommentsDataSource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -32,7 +34,7 @@ public class CommentsDataSource {
         dbHelper.close();   //closes the database
     }
 
-    public Comment createComment(String comment) {
+    public Comment createComment(String s, String comment) {
 
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_COMMENT, comment);
@@ -72,7 +74,6 @@ public class CommentsDataSource {
     }
 
     private Comment cursorToComment(Cursor cursor) {
-
         Comment comment = new Comment();
         Comment.setRating(cursor.getString( cursor.getColumnIndex( MySQLiteHelper.COLUMN_RATING ) ));
         comment.setId(cursor.getLong(0));

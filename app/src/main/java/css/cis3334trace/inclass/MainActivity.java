@@ -39,7 +39,7 @@ public class MainActivity extends ListActivity {
                 String[] comments = new String[] { "Cool", "Very nice", "Hate it" };    //creates options of comments to choose from
                 int nextInt = new Random().nextInt(3);
                 // save the new comment to the database
-                comment = datasource.createComment(comments[nextInt]);
+                comment = datasource.createComment(comments[nextInt], comments[nextInt]);
                 adapter.add(comment);
                 break;
             case R.id.delete:
